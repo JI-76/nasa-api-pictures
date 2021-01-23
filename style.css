@@ -21,10 +21,14 @@ body {
 }
 
 /* Loader */
+/* Style the child Div element <div> class="loader" */
 .loader {
   background: whitesmoke;
   height: 100vh;
   width: 100vw;
+  position: fixed;
+  /* Keep this on top */
+  z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,15 +45,30 @@ body {
   justify-content: center;
 }
 
+/* Style the child Span element <span> id="background" */
 .background {
   background: whitesmoke;
   position: fixed;
   right: 0;
   width: 100%;
   height: 60px;
-
+  /* keep this underneath the Nav Items */
+  z-index: -1;
 }
 
+/* Style the child Header element <h3> class="clickable" */
+.clickable {
+  color: dodgerblue;
+  /* cursor type for button */
+  cursor: pointer;
+  /* cannot be selected like html text */
+  user-select: none;
+}
+
+/* pseudo class */
+.clickable:hover {
+  color: rgb(13, 1115, 218);
+}
 
 /* Images Container */
 .images-container {
@@ -95,7 +114,7 @@ body {
 }
 
 /* Hidden */
-/* at bottom so it can override as needed any previous styling */
+/* at bottom so it can override any previous styling as needed  */
 .hidden {
   display: none;
 }
