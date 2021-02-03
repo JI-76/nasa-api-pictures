@@ -20,10 +20,24 @@ let resultsArray = [];
 // use an object vs array to avoid having to loop through an array to delete items
 let favorites = {};
 
+function showContent(page) {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+
+    if (page === 'results') {
+        resultsNav.classList.remove('hidden');
+        favoritesNav.classList.add('hidden');
+    } else {
+        resultsNav.classList.add('hidden');
+        favoritesNav.classList.remove('hidden');
+    };
+
+    loader.classList.add('hidden');
+};
+
 function createDOMNodes(page) {
     // choose which array to use to build DOM
     const currentArray = page === 'results' ? resultsArray : Object.values(favorites);
-    console.log('Current Array', page, currentArray);
+    // console.log('Current Array', page, currentArray);
 
     // .innerHTML not used as it is not secure as it permits javascript command injection
     // Create HTML for each image returned in fetch results
@@ -98,15 +112,18 @@ function updateDOM(page) {
     // rebuild page
     imagesContainer.textContent = '';
     createDOMNodes(page);
+    showContent(page);
 };
 
 // Get 10 images from NASA API
 async function getNasaPictures() {
+    // Show Loader
+    loader.classList.remove('hidden');
     try {
         const response = await fetch(apiURL);
         resultsArray = await response.json();
         // console.log(resultsArray);
-        updateDOM('favorites');
+        updateDOM('results');
     } catch (error) {
         // Catch error here
         console.log(error);

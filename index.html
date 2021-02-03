@@ -24,15 +24,15 @@
             <span class="navigation-items" id="resultsNav">
                 <!-- User H3 elements as Buttons so they can be managed within a Span element -->
                 <!-- Favorites button -->
-                <h3 class="clickable">Favorites</h3>
+                <h3 class="clickable" onclick="updateDOM('favorites')">Favorites</h3>
                 <!-- add non-breakable space for padding between the buttons containing a bullet point symbol -->
                 <h3>&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;</h3>
                 <!-- Load More button -->
-                <h3 class="clickable">Load More</h3>
+                <h3 class="clickable" onclick="getNasaPictures()">Load More</h3>
             </span>
             <!-- Favorites Nav -->
             <span class="navigation-items hidden" id="favoritesNav">
-                <h3 class="clickable">Load More NASA Images</h3>
+                <h3 class="clickable" onclick="getNasaPictures()">Load More NASA Images</h3>
             </span>
         </div>
         <!-- Images Container -->
